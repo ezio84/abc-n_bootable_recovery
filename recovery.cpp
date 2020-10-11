@@ -730,7 +730,7 @@ Device::BuiltinAction start_recovery(Device* device, const std::vector<std::stri
   }
 
   std::vector<std::string> title_lines = {
-    "Dirty Unicorns " + android::base::GetProperty("ro.mod.version", "(unknown)"),
+    "ABC " + android::base::GetProperty("ro.mod.version", "(unknown)"),
     "Android " + android::base::GetProperty("ro.build.version.release", "(unknown)"),
   };
   if (android::base::GetBoolProperty("ro.build.ab_update", false)) {
