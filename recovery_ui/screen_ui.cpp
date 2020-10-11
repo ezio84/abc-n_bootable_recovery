@@ -806,7 +806,7 @@ void ScreenRecoveryUI::draw_menu_and_text_buffer_locked(
   int y = margin_height_;
 
   if (menu_) {
-    auto& logo = fastbootd_logo_enabled_ ? fastbootd_logo_ : du_logo_;
+    auto& logo = fastbootd_logo_enabled_ ? fastbootd_logo_ : abc_logo_;
     auto logo_width = gr_get_width(logo.get());
     auto logo_height = gr_get_height(logo.get());
     auto centered_x = ScreenWidth() / 2 - logo_width / 2;
@@ -1033,10 +1033,10 @@ bool ScreenRecoveryUI::Init(const std::string& locale) {
   back_icon_sel_ = LoadBitmap("ic_back_sel");
   if (android::base::GetBoolProperty("ro.boot.dynamic_partitions", false) ||
       android::base::GetBoolProperty("ro.fastbootd.available", false)) {
-    du_logo_ = LoadBitmap("logo_image_switch");
+    abc_logo_ = LoadBitmap("logo_image");
     fastbootd_logo_ = LoadBitmap("fastbootd");
   } else {
-    du_logo_ = LoadBitmap("logo_image");
+    abc_logo_ = LoadBitmap("logo_image");
   }
 
   // Background text for "installing_update" could be "installing update" or
@@ -1332,8 +1332,8 @@ int ScreenRecoveryUI::SelectMenu(const Point& point) {
   if (menu_) {
     if (!menu_->IsMain()) {
       // Back arrow hitbox
-      const static int logo_width = gr_get_width(du_logo_.get());
-      const static int logo_height = gr_get_height(du_logo_.get());
+      const static int logo_width = gr_get_width(abc_logo_.get());
+      const static int logo_height = gr_get_height(abc_logo_.get());
       const static int icon_w = gr_get_width(back_icon_.get());
       const static int icon_h = gr_get_height(back_icon_.get());
       const static int centered_x = ScreenWidth() / 2 - logo_width / 2;
